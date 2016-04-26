@@ -75,7 +75,8 @@ public  class Twitter  {
               
           
                 String type="tweet";
-                 String tweet=st.getText();
+                 String t=st.getText();
+                 String tweet=t.replaceAll("\"", "\'");
                  System.out.println("tweet---"+tweet);
                  String classification=classify.tweet_classify(tweet);
                  if(classification.equals(""))
@@ -88,6 +89,7 @@ public  class Twitter  {
                 location loc=new location();
                 if(count == 0)
                 {
+                    
                 country=loc.getCountry(place);
                 
                 count=1;
