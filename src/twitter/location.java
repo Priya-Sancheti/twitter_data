@@ -34,6 +34,8 @@ public class location {
             String  status=(String) json.get("status");
             if(!status.equals("ZERO_RESULTS")){
             JSONArray j=(JSONArray)json.get("results");
+            if(j.length()!= 0)
+            {
             JSONObject jobject=(JSONObject)j.get(0);
             JSONArray address=(JSONArray)jobject.get("address_components");
             System.out.println(address);
@@ -42,6 +44,8 @@ public class location {
                 JSONObject jobj=address.getJSONObject(i);
                System.out.println(jobj);
                 JSONArray jarray=(JSONArray) jobj.get("types");
+                if(jarray.length() != 0)
+                {
                System.out.println(jarray.get(0));
                System.out.println(jobj.get("long_name"));
                 if(jarray.get(0).equals("premise"))
@@ -54,11 +58,12 @@ public class location {
                 country=(String) jobj.get("long_name");
                 break;
                 }
+                }
                  
             }
             System.out.println(country);
             }
-            
+            }
             
             return country;
      
