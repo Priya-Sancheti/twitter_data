@@ -85,6 +85,11 @@ public  class Twitter  {
                 }
                
                 String place=st.getUser().getLocation();
+                if(place == null)
+                {
+                    continue;
+                }
+                System.out.println("place="+place);
                 
                 location loc=new location();
                 if(count == 0)
@@ -122,9 +127,14 @@ public  class Twitter  {
                for(twitter4j.Status rst : rstatus)
                {
                   type="retweet";
-                    place=rst.getUser().getLocation();
+                    String place1=rst.getUser().getLocation();
+                      if(place1 == null)
+                    {
+                    continue;
+                    }
+                
                     System.out.println(rst.getId()+"--"+rst.getUser().getName()+"--"+rst.getUser().getLocation()+"---"+rst.getGeoLocation());
-                     country1=loc.getCountry(place);
+                     country1=loc.getCountry(place1);
                 if(country1.equals(""))
                 {
                     continue;
